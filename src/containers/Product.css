@@ -1,0 +1,58 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+.main{
+    width:100%;
+    text-align: center;
+    height:auto;
+    background-color:#01a3a4;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    color:#576574;
+}
+.item{
+    background-color: green;
+    height:auto;
+    color:black;
+    font-size: 20px;
+}
+input#file {
+    display: inline-block;
+    width: 100%;
+    /* position:fixed; */
+    padding-top: 400px;
+    height: 500px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+   /* background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #e4e4e4;*/
+    border-radius: 20px;
+    background-size: 100%;
+    border: 5px solid green;
+    height:400px;
+    
+  }
+  input{
+      width:60%;
+      height:40px;
+      border-radius: 10px;
+  }
+  table{
+      margin:600px auto 600px auto;
+      position: absolute;
+      padding: auto;
+      background-color: inherit;
+      left:0px;
+      top:0px;
+      bottom: 0px;
+      right:0px;
+
+  }
+  input[type=submit]{
+      background-color: #ee5253;
+  }
+  form{
+      margin-top: 100px;
+  }
