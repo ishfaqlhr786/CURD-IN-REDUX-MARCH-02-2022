@@ -72,6 +72,29 @@ export const GetProductList = () => async (dispatch) => {
        });
      }
    };
+   export const UpdateProduct = (form,id) => async (dispatch) => {
+    // return axios.post(`https://fakestoreapi.com/products/`,postData)
+    
+     try {
+       dispatch({
+         type: "PRODUCT_UPDATE_POSTING",
+       });
+      
+     const res=await axios.patch(`https://fakestoreapi.com/products/${id}`,form)
+     console.log(res.data)
+       dispatch({
+         type: "PRODUCT_UPDATE_SUCCESS",
+        // response: res.data,
+         payload: res.data,
+      // response: postData,
+       });
+     } catch (e) {
+       console.log(e.message, "error");
+       dispatch({
+         type: "PRODUCT_UPDATE_FAIL",
+       });
+     }
+   };
   export const CreateProductNew = (postData) => async (dispatch) => {
    // return axios.post(`https://fakestoreapi.com/products/`,postData)
    

@@ -3,12 +3,16 @@ import GetProductReducer from "./GetProductReducer";
 import ProductListReducer from "./ProductListReducer";
 import CreateProductReducer from './CreateProductReducer'
 import DeleteReducer  from './DeleteReducer'
+import EditReducer from "./EditReducer";
+import UpdateReducer from "./UpdateReducer";
 //import PokemonMultipleReducer from "./PokemonMultipleReducer";
 const rootReducer = combineReducers({
   ProductList: ProductListReducer,
   Product:GetProductReducer,
   CreateProduct:CreateProductReducer,
-  DeleteProduct:DeleteReducer
+  DeleteProduct:DeleteReducer,
+  EditReducerList: EditReducer,
+  Update:UpdateReducer
   
 });
 export default rootReducer;

@@ -1,26 +1,37 @@
+
+
+
 import React ,{useState,useEffect} from 'react'
 import {useParams,useLocation}  from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
-import { CreateProductNew, GetProduct ,DeleteProduct,EditProduct1} from "../actions/ProductActions";
+import { CreateProductNew, GetProduct ,DeleteProduct,EditProduct1,UpdateProduct} from "../actions/ProductActions";
 import {GetProductList} from '../actions/ProductActions'
-export const EditProduct = (props) => {
+export const Update = (props) => {
     
-  const {id,title,category,price}= useParams();
-  console.log(id, title,category,price)
+ // const {id,title,category,price}= useParams();
+  //console.log(id, title,category,price)
+  const editObject=props.location.state;
+
+  console.log(editObject)
+  const {id,title,category,price,image}=editObject;
+  console.log(title)
 const [form ,setForm] =useState({
     title:title,
     category:category,
     price:price,
-    image:""
+    image:image
  
 
 })
-const product = props.match.params.id
+// const product = props.match.params.id
  
  
- console.log(product)
+//  console.log(product)
 const dispatch=useDispatch();
-const postData1=useSelector((state)=> state.EditReducerList)
+// const postData1=useSelector((state)=> state.EditReducerList)
+// console.log(postData1)
+// console.log(postData1.data)
+const postData1=useSelector((state)=> state.Update)
 console.log(postData1)
 console.log(postData1.data)
 const products=useSelector((state)=> state.ProductList)
@@ -37,10 +48,11 @@ e.preventDefault();
 
 
 //dispatch(createPosts(postData))
-dispatch(EditProduct1(form,product))
+//dispatch(EditProduct1(form,id))
+dispatch(UpdateProduct(form,id))
 //data2.push(postData1.data)
 //dispatch(GetProductList())
-data2[product-1]= postData1.data
+data2[id-1]= postData1.data
 
  
 }
@@ -196,3 +208,4 @@ console.log(form.title)
         </div>
     )
 }
+

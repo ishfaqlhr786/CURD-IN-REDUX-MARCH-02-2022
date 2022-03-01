@@ -6,6 +6,9 @@ import {ProductList} from "./containers/ProductList";
 import Product from "./containers/Product";
 import {CreateProduct} from './containers/CreateProduct'
 import { EditProduct } from "./containers/EditProduct";
+import {Edit1}  from './containers/Edit1';
+import { update } from "lodash";
+import { Update} from "./containers/Update";
 //import Post from './containers/Post'
 //import Pokemon from "./containers/Pokemon";
 function App() {
@@ -21,6 +24,8 @@ function App() {
         {/* <Route exact path="/EditProduct/:id/:title/:category/:price" component={EditProduct}/> */}
    
         <Route exact path="/EditProduct/:id/:title/:category/:price" component={EditProduct}/>
+        <Route exact path="/Edit1" component={Edit1}/>
+        <Route exact path="/Update"  component={Update}/>
           
           
         

@@ -14,7 +14,7 @@ export const CreateProduct = (props) => {
    
   
    
-   // const history=useHistory()
+   const history=useHistory()
     // const [title1,setTitle] = useState("")
    
     // const [ProductId,setPid]=useState()
@@ -87,8 +87,20 @@ const handleDelete=async(index)=>{
    
             }
     
+const EditForm=(data)=>{
+    history.push({
+        pathname:"/edit1",
+        state:data
+    })
+}
+const EditForm1=(data)=>{
+    history.push({
+        pathname:"/Update",
+        state:data
 
 
+    })
+}
    return (
         <>
         <Link to="/ProductList">Products</Link>
@@ -137,7 +149,7 @@ const handleDelete=async(index)=>{
             </h2> */}
             <div className="main" style={{textAlign:'center'}}>
                 <span><h2>Latest Products</h2></span><br/>
-           <table  width="1200px" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
+           <table  width="100%" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
                <tr>
                    <th>
                        Id:
@@ -172,9 +184,17 @@ const handleDelete=async(index)=>{
                            <td><img src={image} alt="ll" width="200px"  height="200px"/></td>
                          
                            <td>
-                           <Link to={`/EditProduct/${id}/${title}/${category}/${price}`}>
+                           {/* <Link to={`/EditProduct/${id}/${title}/${category}/${price}`}>
                          
-                               Edit</Link>
+                               Edit</Link> */}
+                               <button onClick={()=>EditForm(product)}
+                               className="btn btn-lg btn-success"
+                               >Edit</button>
+                           </td>
+                           <td>
+                           <button onClick={()=>EditForm1(product)}
+                           className="btn btn-lg btn-secondary"
+                           >Update </button>
                            </td>
                           
                            <td  >
