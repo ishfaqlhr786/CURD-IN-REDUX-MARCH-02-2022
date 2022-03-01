@@ -38,7 +38,7 @@ export const CreateProduct = (props) => {
  
 const handleSubmit=(e)=>{
    
-  e.preventDefault();
+ e.preventDefault();
   
   
   //dispatch(createPosts(postData))
@@ -60,6 +60,9 @@ const changeImage=(e)=>{
     
 
   }
+//   useEffect(()=>{
+//     <ProductList/>
+//     },[])
 useEffect(()=>{
    
     dispatch(GetProductList())
@@ -103,7 +106,10 @@ const EditForm1=(data)=>{
 }
    return (
         <>
-        <Link to="/ProductList">Products</Link>
+        <Link to="/ProductList">
+
+            <h2>View Lists </h2>
+        </Link>
         <div className="main">
             
             <div style={{position:"relative",border:'5px solid #1dd1a1'}} className="item">
@@ -148,8 +154,12 @@ const EditForm1=(data)=>{
                 {postData1.data.title}
             </h2> */}
             <div className="main" style={{textAlign:'center'}}>
-                <span><h2>Latest Products</h2></span><br/>
-           <table  width="100%" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
+                
+           <table  width="100%" border="5px" cellspacing="0px" cellsPadding="10" rowspacing="0px"
+           
+           caption="hhh">
+        
+             
                <tr>
                    <th>
                        Id:

@@ -52,16 +52,20 @@ e.preventDefault();
 dispatch(UpdateProduct(form,id))
 //data2.push(postData1.data)
 //dispatch(GetProductList())
-data2[id-1]= postData1.data
+const arr=[...data2]
+console.log(arr)
+arr[id-1]=postData1.data
 
+    setData2(arr)
+console.log(data2)
  
 }
 useEffect(()=>{
 dispatch(GetProductList())
 },[dispatch])
-// useEffect(()=>{
-//   dispatch(GetProductList())
-// },[postData1])
+useEffect(()=>{
+  dispatch(GetProductList())
+},[postData1])
 const changeImage=(e)=>{
     try {
     //   setImage(
@@ -142,7 +146,7 @@ console.log(form.title)
             </div>
             <div className="main" style={{textAlign:'center'}}>
                 <span><h2>Latest Products</h2></span><br/>
-           <table  width="1200px" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
+           <table  width="100%" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
                <tr>
                    <th>
                        Id:

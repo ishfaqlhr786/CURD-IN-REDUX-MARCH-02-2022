@@ -17,9 +17,9 @@ function App() {
       
      
       <Switch>
-        <Route exact path={"/"} component={ProductList} />
+       
         <Route exact path={"/Product/:product"} component={Product} />
-        <Route exact path={"/CreateProduct"} component={CreateProduct} /> 
+        <Route exact path={"/"} component={CreateProduct} /> 
       
         {/* <Route exact path="/EditProduct/:id/:title/:category/:price" component={EditProduct}/> */}
    

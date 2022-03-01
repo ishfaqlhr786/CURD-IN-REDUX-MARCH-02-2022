@@ -137,7 +137,7 @@ console.log(form.title)
             </div>
             <div className="main" style={{textAlign:'center'}}>
                 <span><h2>Latest Products</h2></span><br/>
-           <table  width="1200px" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
+           <table  width="100%" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
                <tr>
                    <th>
                        Id:
