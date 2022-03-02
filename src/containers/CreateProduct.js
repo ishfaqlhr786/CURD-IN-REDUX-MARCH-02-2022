@@ -27,26 +27,40 @@ export const CreateProduct = (props) => {
    })
     const dispatch=useDispatch();
    const postData1=useSelector((state)=> state.CreateProduct)
-   console.log(postData1)
+   console.log(postData1.data)
+   const delObj=useSelector((state)=>state.DeleteProduct)
+   console.log("deleted object is",delObj)
    const products=useSelector((state)=> state.ProductList)
    console.log(products.data)
 
    const [data2,setData2]= useState(
-        [...products.data]
+      [...products.data]
+   
    )
-   console.log(data2)
+   const [data1,setData1]=useState({
+    data:   
+   [...products.data]
+   }
+    )
+   console.log(data1)
  
 const handleSubmit=(e)=>{
    
  e.preventDefault();
   
-  
+ 
   //dispatch(createPosts(postData))
   dispatch(CreateProductNew(postData))
-  data2.push(postData1.data)
+  let arr=[...data1.data]
+  arr.push(postData1.data)
+  setData2(arr)
+ //console.log(arr)
   
     
 }
+useEffect(()=>{
+    dispatch(CreateProductNew(postData))
+},[postData1])
 const changeImage=(e)=>{
     try {
     //   setImage(
@@ -67,26 +81,30 @@ useEffect(()=>{
    
     dispatch(GetProductList())
 },[dispatch])
-useEffect(()=>{
-    dispatch(GetProductList())
-},[postData1])
+useEffect((e)=>{
+   // e.preventDefault()
+   // dispatch(GetProductList())
+  // dispatch(GetProduct(product))
+},[data2,postData])
 const getIndex=(index)=>{
     console.log(index)
     return index;
 }
 const handleDelete=async(index)=>{
- 
- await   axios.delete(`https://fakestoreapi.com/products/${index}`)
-    .then(res => {
-        console.log(res.data)
+ console.log(index)
+await   axios.delete(`https://fakestoreapi.com/products/${index}`)
+   .then(res => {
+       console.log(res.data)
     
    const rows=[...data2]
    console.log(rows)
    rows.splice(index,1)
-  setData2([...rows])
- 
+ setData2([...rows])
+//dispatch(DeleteProduct(id))
+console.log(data2)
   
-    })
+   })
+   
    
             }
     
@@ -111,8 +129,8 @@ const EditForm1=(data)=>{
             <h2>View Lists </h2>
         </Link>
         <div className="main">
-            
-            <div style={{position:"relative",border:'5px solid #1dd1a1'}} className="item">
+            <form onSubmit={handleSubmit}>
+           
                  <label for="file">Please select am image</label>
                
            
@@ -127,10 +145,10 @@ const EditForm1=(data)=>{
    }}
    
    />
-   </div>
-   <div className="item">
+   {/* </div>
+   <div className="item"> */}
    
-            <form onSubmit={handleSubmit}>
+            
             
           
                
@@ -147,8 +165,8 @@ const EditForm1=(data)=>{
                 <br/>
                 <input type="submit" value="Create product"/>
 
-            </form>
-            </div>
+            
+          
             {/* <h2>
                 {postData1.data.id}
                 {postData1.data.title}
@@ -157,7 +175,7 @@ const EditForm1=(data)=>{
                 
            <table  width="100%" border="5px" cellspacing="0px" cellsPadding="10" rowspacing="0px"
            
-           caption="hhh">
+           caption="hhh"  style={{position:"absolute",top:"300px"}}>
         
              
                <tr>
@@ -181,7 +199,7 @@ const EditForm1=(data)=>{
                    </th>
                </tr>
                {
-            data2?.map((product,index)=>{
+            data2.map((product,index)=>{
                        const {id,title,category,price,image}=product
 
                        return(<>
@@ -218,6 +236,7 @@ const EditForm1=(data)=>{
                         
                         
                         </td>
+                        
 
                        </tr>
                        
@@ -226,7 +245,8 @@ const EditForm1=(data)=>{
                }
            </table>
            </div>
-        
+           
+        </form>
         </div>
         </>
     )

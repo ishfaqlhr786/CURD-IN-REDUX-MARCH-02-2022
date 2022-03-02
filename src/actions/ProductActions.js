@@ -131,7 +131,7 @@ export const GetProductList = () => async (dispatch) => {
           payload: data
         })
       })
-    }
+    } 
   }
   export const DeleteProduct = (id) => async (dispatch) => {
     try {

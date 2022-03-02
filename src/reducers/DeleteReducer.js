@@ -14,20 +14,21 @@
         };
       case "PRODUCT_DELETE_FAIL":
         return {
-          ...state,
+          ...state.data,
           loading: true,
           errorMsg: "Unable to find Pokemon",
         };
       case "PRODUCT_DELETING_SUCCESS":
         return {
-         // ...state,
+         ...state.data,
           loading: false,
           errorMsg: "",
-          data: {
-            ...state,
-           // [action.product]: action.payload,
-           data:action.payload
-          },
+          // data: {
+          //   ...state,
+          //  // [action.product]: action.payload,
+          //  data:action.payload
+          // },
+
           [action.index]: action.payload
         //  data:action.payload
         };

@@ -40,6 +40,9 @@ console.log(products.data)
 const [data2,setData2]= useState(
      [...products.data]
 )
+const [data1,setData1]= useState({
+    data:[...products.data]
+})
 console.log(data2)
 
 const handleSubmit=(e)=>{
@@ -52,7 +55,8 @@ e.preventDefault();
 dispatch(UpdateProduct(form,id))
 //data2.push(postData1.data)
 //dispatch(GetProductList())
-const arr=[...data2]
+let arr=[...data1.data]
+//const arr=[...data2]
 console.log(arr)
 arr[id-1]=postData1.data
 
@@ -65,6 +69,9 @@ dispatch(GetProductList())
 },[dispatch])
 useEffect(()=>{
   dispatch(GetProductList())
+},[postData1])
+useEffect(()=>{
+    dispatch(UpdateProduct(form,id))
 },[postData1])
 const changeImage=(e)=>{
     try {

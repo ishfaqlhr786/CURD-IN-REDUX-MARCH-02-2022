@@ -36,6 +36,11 @@ console.log(products.data)
 const [data2,setData2]= useState(
      [...products.data]
 )
+const [data1,setData1]=useState({
+    data:   
+   [...products.data]
+   }
+    )
 console.log(data2)
 
 const handleSubmit=(e)=>{
@@ -47,10 +52,17 @@ e.preventDefault();
 dispatch(EditProduct1(form,id))
 //data2.push(postData1.data)
 //dispatch(GetProductList())
-data2[id-1]= postData1.data
+let arr= [...data1.data]
+arr[id-1]=postData1.data;
+//data2[id-1]= postData1.data
+setData2(arr)
 
  
 }
+useEffect(()=>{
+    dispatch(EditProduct1(form,id))
+   // dispatch(CreateProductNew(postData))
+},[postData1])
 useEffect(()=>{
 dispatch(GetProductList())
 },[dispatch])
