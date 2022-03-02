@@ -129,8 +129,8 @@ const EditForm1=(data)=>{
             <h2>View Lists </h2>
         </Link>
         <div className="main">
-            <form onSubmit={handleSubmit}>
-           
+                        
+            <div style={{position:"relative",border:'5px solid #1dd1a1'}} className="item">
                  <label for="file">Please select am image</label>
                
            
@@ -145,14 +145,32 @@ const EditForm1=(data)=>{
    }}
    
    />
-   {/* </div>
-   <div className="item"> */}
+   </div>
+   <div className="item">
    
             
-            
+            <form onSubmit={handleSubmit}>
+                <label>Title</label><br/>
+                <input type="text"
+                className="txt"
+                value={postData.title} onChange={(e)=>setPostdata({...postData,title:e.target.value})}
+                />
+                <br/>
+                <label>Category</label><br/>
+                <input type="text" 
+                className="txt"
+                value={postData.category} onChange={(e)=>setPostdata({...postData,category:e.target.value})}
+                />
+                <br/>
+                <label>Price</label><br/>
+                <input type="number" 
+                className="txt"
+                value={postData.price} onChange={(e)=>setPostdata({...postData,price:e.target.value})}
+                />
+
           
                
-                <label>Title</label><br/>
+                {/* <label>Title</label><br/>
                 <input type="text" value={postData.title} onChange={(e)=>setPostdata({...postData,title:e.target.value})}  />
                 <br/>
                 <label>Category</label><br/>
@@ -160,24 +178,17 @@ const EditForm1=(data)=>{
                 <br/>
                 <label>Price</label><br/>
                 <input type="number" value={postData.price} onChange={(e)=>setPostdata({...postData,price:e.target.value})}  />
-             
+              */}
                 <br/>
                 <br/>
-                <input type="submit" value="Create product"/>
+                <input type="submit" value="Create Product "/>
 
+            </form>
             
-          
-            {/* <h2>
-                {postData1.data.id}
-                {postData1.data.title}
-            </h2> */}
+            </div>
             <div className="main" style={{textAlign:'center'}}>
-                
-           <table  width="100%" border="5px" cellspacing="0px" cellsPadding="10" rowspacing="0px"
-           
-           caption="hhh"  style={{position:"absolute",top:"300px"}}>
-        
-             
+                <span><h2>Latest Products</h2></span><br/>
+           <table  width="100%" border="5px" cellspacing="8px" cellsPadding="10" rowspacing="10px">
                <tr>
                    <th>
                        Id:
@@ -199,18 +210,17 @@ const EditForm1=(data)=>{
                    </th>
                </tr>
                {
-            data2.map((product,index)=>{
+            data2?.map((product,index)=>{
                        const {id,title,category,price,image}=product
 
                        return(<>
-                       <tr key={index} onClick={()=>getIndex(index)}>
+                       <tr key={index} >
                            <td> {id}</td>
                            <td>{title}</td>
                            <td>{category}</td>
                            <td>{price}</td>
                            <td>{image}</td>
                            <td><img src={image} alt="ll" width="200px"  height="200px"/></td>
-                         
                            <td>
                            {/* <Link to={`/EditProduct/${id}/${title}/${category}/${price}`}>
                          
@@ -236,7 +246,24 @@ const EditForm1=(data)=>{
                         
                         
                         </td>
+                         
+                           {/* <td>
+                           <Link to={`/EditProduct/${id}/${title}/${category}/${price}`}>
+                         
+                               Edit</Link>
+                           </td>
+                          
+                           <td  >
+                               
+                               <button className="btn btn-lg btn-danger"  onClick={()=>handleDelete(index)}
+                           
+                       
+                         
                         
+                        >Delete</button> 
+                        
+                        
+                        </td> */}
 
                        </tr>
                        
@@ -245,8 +272,10 @@ const EditForm1=(data)=>{
                }
            </table>
            </div>
-           
-        </form>
+          
+          
+
+
         </div>
         </>
     )
